@@ -36,11 +36,11 @@ DETOUR_DECL_STATIC3(DETOUR_BuildSpriteLoadName, int, int, outLen, bool*, bIsAVI,
 
     // prevent something shit buggy?
     // like 'sprites/sprites/bluelaser1'
-    const size_t len = strlen(file);
-    if (len > 15 && strncmp(file, "sprites", 7) == 0 && strncmp(file, "sprites", 7) == 0)
+    const size_t len = strlen(pFile);
+    if (len > 15 && strncmp(pFile, "sprites", 7) == 0 && strncmp(&file[8], "sprites", 7) == 0)
     {
         // spam logs
-        smutils->LogError(myself, "Shit detected -> [%s] from [%s] -> Fixed -> [%s]", pFile, pName, file[8]);
+        smutils->LogError(myself, "Shit detected -> [%s] from [%s] -> Fixed -> [%s]", pFile, pName, &file[8]);
         strcpy(pOut, &file[8]);
     }
     else
